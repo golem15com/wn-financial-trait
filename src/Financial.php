@@ -191,9 +191,9 @@ trait Financial
         $balance = array_get($this->attributes, $financialAttributes[$key]['balance']);
         $currencyIso = array_get($this->attributes, $financialAttributes[$key]['currency']);
         if (!$balance) {
-            $balance = 0; // support for nullable fields
+            $balance = '0';
         }
-        return Money::$currencyIso($balance);
+        return Money::$currencyIso((string) $balance);
     }
 
     /**
