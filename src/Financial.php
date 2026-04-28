@@ -21,11 +21,6 @@ trait Financial
     private $protectedFieldNames = [];
 
     /**
-     * @var bool
-     */
-    protected static $financialTraitAlreadyBooted = false;
-
-    /**
      * Boot the financial trait for a model.
      *
      * @throws \Exception
@@ -33,12 +28,6 @@ trait Financial
      */
     public static function bootFinancial()
     {
-        if (static::$financialTraitAlreadyBooted) {
-            return;
-        }
-
-        static::$financialTraitAlreadyBooted = true;
-
         if (!property_exists(get_called_class(), 'financial')) {
             throw new \Exception(
                 sprintf('You must define a $financial property in %s to use the Financial trait.', get_called_class())
